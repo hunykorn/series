@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>DataCamp Light | Standalone example</title>
+  <link rel='shortcut icon' type='image/x-icon' href='https://www.datacamp.com/assets/favicon.ico'/>
+  <style>
+    .exercise {
+      margin: 50px;
+    }
+
+    [data-datacamp-exercise] {
+        visibility: hidden;
+      }
+  </style>
+
+  <script async src="https://cdn.datacamp.com/dcl-react-dev.js.gz"></script>
+</head>
+<body>
+  <!-- EXO 1 -->
+  <div class="exercise">
+    <div class="title">
+      <h2>Niveau Facile: Calcul de la moyenne</h2>
+    </div>
+    <p>Écrivez une fonction qui prend en entrée un tableau NumPy unidimensionnel et renvoie la moyenne de ses éléments.</p>
+    <div data-datacamp-exercise data-lang="python" data-height="350">
+      <code data-type="pre-exercise-code">import numpy as np</code>
+      <code data-type="sample-code">
+        # Cree une fonction
+        def moyenne(tableau):
+          #Votre code ici
+          return moyenne
+        # Affiche le résultat
+        tableau = np.array([1, 2, 3, 4, 5])
+        print(moyenne(tableau))
+      </code>
+      <code data-type="solution">
+        # Cree une fonction
+        def moyenne(tableau):
+          moyenne = np.mean(tableau)
+          return moyenne
+
+        # Affiche la solution
+        tableau = np.array([1, 2, 3, 4, 5])
+        print(moyenne(tableau))
+      </code>
+      <code data-type="sct">
+        test_output_contains("3.0", no_output_msg="Vous avez fait une erreur")
+      </code>
+      <div data-type="hint">
+        <p>Il y a une fonction qui fonctionne</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXO 2 -->
+
+  <div class="exercise">
+    <div class="title">
+      <h2>Niveau Moyen : Somme Cumulative des Éléments Pair et Impair</h2>
+    </div>
+    <p>Écrivez une fonction qui prend en entrée un tableau NumPy unidimensionnel et renvoie un tuple contenant la somme cumulative des éléments pairs et impairs.</p>
+    <div data-datacamp-exercise data-lang="python" data-height="350">
+      <code data-type="pre-exercise-code">import numpy as np</code>
+      <code data-type="sample-code">
+        # Cree une fonction
+        def somme_cumulative(tableau):
+          #Votre code ici
+          return (somme_pair, somme_impair)
+        # Affiche le résultat
+        tableau = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+        print(somme_cumulative(tableau)) 
+      </code>
+      <code data-type="solution">
+        def somme_cumulative(tableau):
+        somme_pair = np.cumsum(tableau[np.where(tableau % 2 == 0)])
+        somme_impair = np.cumsum(tableau[np.where(tableau % 2 != 0)])
+        return (somme_pair, somme_impair)
+    
+      tableau = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+      print(somme_cumulative(tableau))
+      </code>
+      <code data-type="sct">
+        test_function("somme_cumulative", args=["tableau"])
+      </code>
+      <div data-type="hint">
+        <p>Fonction de somme cumulé et fonction de recherche</p>
+      </div>
+    </div>
+  </div>
+
+<!-- EXO 3 -->
+<div class="exercise">
+  <div class="title">
+    <h2>Niveau Moyen: Calcul de la Racine Carrée des Éléments Positifs</h2>
+  </div>
+  <p>Écrivez une fonction qui prend en entrée un tableau NumPy unidimensionnel et renvoie un nouveau tableau où seuls les éléments positifs sont remplacés par leur racine carrée.</p>
+  <div data-datacamp-exercise data-lang="python" data-height="350">
+    <code data-type="pre-exercise-code">import numpy as np</code>
+    <code data-type="sample-code">
+      # Cree une fonction
+      def racine_carree_positifs(tableau):
+        #Votre code ici
+        return 
+      # Affiche le résultat
+      tableau = np.array([-1, 4, -9, 16, 25])
+      print(racine_carree_positifs(tableau))
+    </code>
+    <code data-type="solution">
+      # Cree une fonction
+      def racine_carree_positifs(tableau):
+        return np.sqrt(tableau.clip(tableau, 0, None))  # Remplace les éléments négatifs par 0 avant de calculer la racine carrée
+
+      # Affiche le résultat
+      tableau = np.array([-1, 4, -9, 16, 25])
+      print(racine_carree_positifs(tableau))
+    </code>
+    <code data-type="sct">
+      test_output_contains("[0. 2. 0. 4. 5.]", no_output_msg="Vous avez fait une erreur")
+    </code>
+    <div data-type="hint">
+      <p>Remplace les éléments négatifs par 0 avant de calculer la racine carrée</p>
+    </div>
+  </div>
+</div>
+ 
+</body>
+</html>

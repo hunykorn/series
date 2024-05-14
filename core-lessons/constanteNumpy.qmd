@@ -1,0 +1,32 @@
+---
+title: Les constantes avec Numpy
+aliases: 
+  - ../coding-strategies.html
+---
+
+NumPy fourni un certain nombre de constantes tel que :
+<ul>
+<li>**π**</li>
+<li>***e***</li>
+<li>**+∞** et **−∞**</li>
+<li>**Nan** pour "pas un nombre".</li>
+</ul>
+
+```{python}
+import numpy as np
+
+print(np.pi)  # Constante pi
+print(np.e)  # Constante e
+print(np.NAN)  # Pas un nombre
+```
+
+```{python}
+print(np.inf)  # Constante infini
+print(np.PINF)  # Constante infini positive
+print(np.NINF)  # Constante infini négative
+```
+
+```{python}
+print(np.PZERO)  # Constante zéro positif
+print(np.NZERO)  # Constante zéro négatif
+```

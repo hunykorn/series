@@ -1,0 +1,36 @@
+---
+title: Fonctions Mathématiques
+---
+
+NumPy fournit un certain nombre de fonctions mathématiques dans le domaine de la trigonométrie, des exponentielles et des logarithmes.
+
+Liste non exhaustive des fonctions :
+
+<ul>
+<li>**np.cos(array)**</li>
+<li>**np.sin(array)**</li>
+<li>**np.tan(array)**</li>
+<li>**np.arccos(array)**</li>
+<li>**np.arcsin(array)**</li>
+<li>**np.arctan(array)**</li>
+<li>**np.degrees(array)** ou **np.rad2deg(array)** conversion de radian en degré</li>
+<li>**np.radians(array)** ou **np.deg2rad(array)** conversion de radian en degré</li>
+<li>**np.exp(array)**</li>
+<li>**np.log(array)** logarithme naturel</li>
+<li>**np.log2(array)** logarithme base 2</li>
+<li>**np.log10(array) logarithme base 10**</li>
+<li>**np.sqrt(array)** racine carré</li>
+</ul>
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.linspace(0, 2*np.pi, 100)  # Création d'un tableau allant de 0 à 2*pi
+y = np.sin(x)  # Calcul du sinus du tableau x
+
+# Affichage du calcul
+plt.plot(x, y)
+plt.show()
+```
+
+

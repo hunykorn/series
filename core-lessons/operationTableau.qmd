@@ -1,0 +1,49 @@
+---
+title: Opération sur les tableaux
+aliases: 
+  - ../communities.html
+---
+
+Il est possible d'effectuer les opérations classiques **+,−,×,÷** entre deux tableaux (l'opération s'effectue alors terme à terme) ou entre un tableau et une constante (l'opération est appliquée à tous les termes avec la constante).
+
+```{python}
+import numpy as np
+a = np.arange(10)  # Tableau de 0 à 9
+b = np.ones(10)  # Tableau de 10 éléments rempli de 1
+
+print(a)
+print(b)
+```
+
+### Addition et multiplication
+```{python}
+# Addition des deux tableaux
+print(a+b)
+
+# Addition d'un tableau et d'une constante
+print(1+b)
+
+# Multiplication d'un tableau et d'une constante
+print(3*a)
+```
+
+### Matrice 3x3 et Diagonale
+```{python}
+# Matrice 3x3
+m = np.arange(9).reshape(3, 3)
+print(m)
+
+# Matrice diagonale 3x3
+v = np.ones(3)
+diag = np.diag(v)
+print(diag)
+```
+
+```{python}
+print(m*diag)  # Multiplication de deux matrices
+print(diag-1)  # Soustraction de la constante à tous les termes
+```
+
+```{python}
+print((diag-1)/(m+2))  # Combinaison des opérations
+```

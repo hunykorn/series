@@ -1,0 +1,261 @@
+---
+title: "Les Tableaux avec Numpy"
+aliases:
+  - bsilt.html
+  - ../better-science.html    
+---
+
+NumPy introduit un nouveau type l'array qui est semblable à une liste, mais tous les éléments doivent être du même type (entier, flottant, booléen ou encore chaîne de caractères).
+
+Le tableau peut être unidimensionnel ou multidimensionnel.
+
+## Création d'un Tableau
+### Tableau de type float
+
+
+
+```{python}
+# Tableau unidimensionnel
+import numpy as np
+
+# Construction du 
+tab = np.array([1, 2, 3, 4], float)
+
+# Affichage du tableau
+print(tab)
+# Affichage de l'élément d'indice 1
+print("Element d'incide 1 :", tab[1])
+```
+
+### Tableau de type int
+
+```{python}
+tab = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]], int)  # Dimension = 2
+
+print(tab)
+print("Sélection de l'élément d'indice [2,1]:", tab[2, 1])
+```
+
+```{python}
+tab = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])  # Dimension = 3
+
+print(tab)
+print("Sélection de l'élément d'indice [1,0,1] :", tab[1, 0, 1])
+```
+
+## Sélection de données dans un tableau (Slicing)
+### Tableau unidimensionnel
+
+Pour sélectionner une portion de données dans un tableau, le slicing fonctionne de la même manière que pour les listes.
+
+L'usage est le suivant : **array[début:fin:pas]**
+
+```{python}
+a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9], int)
+
+# Une valeur sur deux en commençant à l'indice 0 jusqu'à l'indice 6 exclu
+print(a[0:6:2])
+# Une valeur sur trois en commençant à l'indice 1 jusqu'à la fin
+print(a[1::3])
+```
+
+```{python}
+print(a[0:5])  # Les valeurs comprises entre l'indice 0 et 5 exclue
+print(a[:5])  # Les 5 premières valeurs
+```
+
+```{python}
+print(a[5:9])  # Les valeurs comprises entre l'indice 5 et 9 exclue
+print(a[5:])  # Les dernières valeurs à partir de l'indice 5
+```
+
+```{python}
+print(a[-1])  # Affichage de la dernière valeur d'un tableau
+```
+
+### Tableau unidimensionnel
+Pour un tableau multidimensionnel, on sépare chaque dimension par une virgule :
+**array[dim1,dim2,dim3]→array[debut:fin:pas,début:fin:pas,début:fin:pas]**
+
+```{python}
+# Tableau bidimensionnel
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [
+             10, 11, 12]], int)  # Dimension = 2
+
+print(a)
+```
+
+```{python}
+print(a[1])  # Tableau d'indice 1
+print(a[1, 2])  # Troisième élément du tableau d'indice 1
+```
+```{python}
+print(a[::2])  # Un tableau sur deux
+print(a[0:3:2])  # Un tableau sur deux
+```
+```{python}
+print(a[:, 0])  # Le premier élément de chaque tableau
+print(a[:, ::2])  # Un élément sur deux dans chaque tableau
+```
+
+## Copie d'un tableau
+::: {.callout-warning icon="false"}
+## Attention
+Si vous modifiez une donnée d'un tableau b issu de l'extraction d'un tableau a, le tableau a sera aussi modifié.
+:::
+```{python}
+a = np.array([1, 2, 3, 4])
+b = a[1:3]  # Sélection des données pour b par slice
+b[1] = 0  # Modification de b
+
+print(a)  # a est aussi modifié
+```
+
+Pour éviter ce problème il faut réaliser une copie avec la fonction **np.copy(a)** ou la méthode **a.copy()**.
+
+```{python}
+a = np.array([1, 2, 3, 4])
+b = a[1:3].copy()  # Sélection des données pour b par slice et copy
+b[1] = 0  # Modification de b
+
+print(a)  # a n'est plus modifié
+```
+
+
+## Construction des tableaux
+Il existe plusieurs fonctions qui permettent de construire un tableau rapidement.
+
+### Fonction np.arange
+Équivalent à la fonction **range**.
+```{python}
+# Créé un tableau de 10 éléments par pas de 1 en commençant à 0
+a = np.arange(10)
+print(a)
+
+# On peut forcer le type ici flottant
+a = np.arange(10, dtype=float)
+print(a)
+
+a = np.arange(10.0)
+print(a)
+```
+
+
+```{python}
+# Création d'un tableau de valeur entre 1 et 3 exclu avec un pas de 0,2
+a = np.arange(1, 3, 0.2)
+print(a)
+```
+
+
+### Fonction np.linspace
+La fonction **np.arange** exclue le dernier élément. Il est alors plus courant d'utiliser la fonction **np.linspace** pour éviter ce problème.
+Utilisation : **np.linspace(début, fin, nombre de points)**
+
+```{python}
+# Création d'un tableau de 0 à 10 inclue par pas de 1
+a = np.linspace(0, 10, 11)
+print(a)
+
+# Création d'un tableau de 0 à 10 inclue par pas de 0.1
+a = np.linspace(0, 10, 101)
+print(a)
+```
+
+
+### Fonction np.logspace
+Fonction similaire à **np.linspace** met avec un espacement logarithmique entre les points.
+Utilisation : **np.logspace(début, fin, nombre de points)**
+
+```{python}
+# Création d'un tableau de 0 à 10 avec 11 points
+a = np.logspace(0, 10, 11)
+print(a)
+
+# Création d'un tableau de 0 à 10 avec 101 points
+a = np.logspace(0, 10, 101)
+print(a)
+```
+
+## Fonctions modifiant les dimensions d'un tableau
+Il est possible de redimensionner un tableau pour en augmenter le nombre de dimensions ou au contraire les réduire.
+
+### Méthode .reshape()
+::: {.callout-warning icon="false"}
+## Attention
+Le nombre d'éléments doit rester identique entre le tableau d'origine et la version avec le format modifier.
+
+La fonction .reshape permet de modifier le format d'un tableau en gardant le même nombre d'éléments.
+:::
+
+```{python}
+a = np.arange(8)
+print(a)
+
+# On le transforme en tableau de 2 lignes et 4 colonnes
+b = a.reshape(2, 4)
+print(b)
+
+# On le transforme en tableau de 4 lignes et 2 colonnes
+c = a.reshape(4, 2)
+print(c)
+```
+
+### Fonction np.resize
+Similaire à **.reshape()** mais modifier le nombre total d'éléments.
+
+::: {.callout-warning icon="false"}
+## Attention
+Cette fonction n'est pas une méthode d'un tableau. On doit l'appeler avec **np.resize(tableau, (l, c))** avec l le nombre de lignes et c le nombre de colonnes.
+:::
+
+```{python}
+a = np.arange(8)
+print(a)
+
+# On le transforme en tableau de 2 lignes et 3 colonnes
+b = np.resize(a, (2, 3))
+print(b)
+
+# On le transforme en tableau de 1 lignes et 2 colonnes
+c = np.resize(a, (1, 2))
+print(c)
+```
+
+### Méthodes .ravel ou .flatten
+Les fonctions **.ravel** et **.flatten** permettent de retourner un tableau de dimension 1 en "aplatissant" un tableau de n dimensions.
+
+```{python}
+a = np.arange(8).reshape(4, 2)
+print(a)
+
+# Aplatissement pour retourner sur une dimension 1
+b = a.ravel()
+print(b)
+
+c = a.flatten()
+print(c)
+```
+
+
+### Méthode .transpose
+Cette fonction permet de transposer deux axes, par défaut le dernier.
+Par exemple un tableau de 2x4 deviendra un tableau de 4x2.
+
+```{python}
+a = np.arange(8).reshape(4, 2)
+print(a)
+
+# On transpose le tableau
+b = a.transpose()
+print(b)
+```
+
+```{python}
+a = np.arange(12).reshape(4, 3)
+print(a)
+
+# On transpose le tableau
+b = a.transpose()
+print(b)
+```

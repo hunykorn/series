@@ -4,21 +4,16 @@ project:
 website: 
   page-navigation: true
   title: "Openscapes Champions Series"
-  site-url: "https://openscapes.github.io/series"
- 
-  repo-url: https://github.com/openscapes/series
-  repo-actions: [edit, issue]
-  
-  # sharing: [twitter] come back to https://github.com/sta210-s22/website/blob/main/_quarto.yml#L13
+
   
   page-footer:
     right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
-    left: "&copy; CC-By Openscapes, 2023"
+    left: "@Copyright ? Ké cé cé ?❤️"
     background: "#D9E3E4"
     
   sidebar:
     background: "#D9E3E4"
-    logo: "images/openscapes_hex.png"
+    logo: "images/logoherinew.png"
     pinned: true
     align: center
     tools: 
@@ -26,8 +21,8 @@ website:
         href: https://openscapes.org
         text: "Openscapes.org"
       - icon: github
-        href: https://github.com/openscapes/series
-        text: "Openscapes Series GitHub"
+        href: https://github.com/hunykorn
+        text: "Lucas GitHub"
       - icon: twitter
         href: https://twitter.com/openscapes
         text: "Openscapes Twitter"        
@@ -37,71 +32,38 @@ website:
     collapse-level: 1
     contents:
       - href: "index.qmd"
-        text: Welcome
-      - section: core-lessons/index.qmd
+        text: Accueil
+      - section: Cours
         contents:        
-         - href: "core-lessons/mindset.qmd"
-           text: Mindset
-         - href: core-lessons/better-science.qmd
-           text: Better science
-         - section: core-lessons/github/index.qmd
-           contents:
-            - core-lessons/github/github-pub.qmd
-            - core-lessons/github/github-issues.qmd
-         - href: "core-lessons/team-culture.qmd"
-           text: Team culture
-         - href: "core-lessons/data-strategies.qmd"
-           text: Data stategies
-         - href: "core-lessons/coding-strategies.qmd"
-           text: Coding strategies
-         - href: "core-lessons/communities.qmd"
-           text: Open communities
-         - href: "core-lessons/pathways.qmd"
-           text: Pathways
-      - section: "Additional Lessons"
-        contents:
-         - href: "additional-lessons/code-of-conduct.qmd"
-           text: Code of Conduct
-         - href: "additional-lessons/r-for-scicomm.qmd"  
-           text: R for SciComm
-         - href: "additional-lessons/documentation.qmd"  
-           text: Documentation
-      - community-lessons/index.qmd
-      - section: how-do-i/index.qmd
-        contents:        
-         - href: "how-do-i/setup-rstudio-github.qmd"   
-           text: Setup RStudio & GitHub
-         - href: "how-do-i/do-fix-git-things.qmd"    
-           text: Do & fix git things            
-         - href: "how-do-i/refactor-modularize-code.qmd" 
-           text: Refactor code           
-         - href: "how-do-i/create-publish-quarto.qmd"  
-           text: Start with Quarto           
-         - href: "how-do-i/ask-questions.qmd" 
-           text: Ask questions
-         - href: "how-do-i/discuss-community.qmd" 
-           text: Discuss community
-         - href: "how-do-i/reuse-openscapes-approach.qmd"           
-           text: Reuse Openscapes Approach                   
-      - section: "Inspiration"
-        contents:
-         - href: "inspiration/resources-that-influence.qmd"
-           text: Resources that influence us
+         - href: "core-lessons/tableauNumpy.qmd"
+           text: Tableau Numpy
+         - href: core-lessons/constanteNumpy.qmd
+           text: Constante Fournie
+         - href: "core-lessons/operationTableau.qmd"
+           text: Opération sur les Tableaux
+         - href: "core-lessons/produitSomme.qmd"
+           text: Produit et Somme
+         - href: "core-lessons/fonctionUtiles.qmd"
+           text: Fonctions Utiles
+         - href: "core-lessons/fonctionMath.qmd"
+           text: Fonctions Mathématiques
+         - href: "core-lessons/fonctionRecherche.qmd"
+           text: Fonctions de Recherches
+         - href: "core-lessons/assamblageTableau.qmd"
+           text: Assemblage de plusieurs tableaux
+      - href: "Exercice.qmd"
+        text: Exercice
 
-           
 format:
   html:
     theme:
-      light: [cosmo, theme.scss] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
+      light: [cosmo, theme.scss]
       dark: [cosmo, theme-dark.scss]
     mainfont: "Atkinson Hyperlegible"
     code-copy: true
     code-overflow: wrap
-    toc: true
+    toc: true #false pour cacher sidebar
 
 
-filters:
-  - include-files.lua
-  - quarto
 
   
